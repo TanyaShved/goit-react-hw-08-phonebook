@@ -1,0 +1,16 @@
+.list {
+  margin: 0;
+  width: 320px;
+  height: 140px;
+}
+
+.contact {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  align-items: baseline;
+}
+
+.contact:last-child {
+  margin-bottom: 0;
+}
