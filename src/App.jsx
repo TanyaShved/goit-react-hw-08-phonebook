@@ -10,7 +10,6 @@ import PublicRoute from 'components/PublicRoute/PublicRoute';
 const RegisterView = lazy(() => import('views/RegisterView'  /* webpackChunkName: "register-view" */));
 const LoginView = lazy(() => import('views/LoginView'  /* webpackChunkName: "login-view" */));
 const ContactsView = lazy(() => import('views/ContactsView'  /* webpackChunkName: "contacts-view" */));
-const NotFoundView = lazy(() =>import('views/NotFoundView' /* webpackChunkName: "not-found-view" */),);
 
 const App = () => { 
   const dispatch = useDispatch();
@@ -41,10 +40,6 @@ const App = () => {
           <PrivateRoute path="/contacts" redirectTo='/login'>
             <ContactsView />
             </PrivateRoute>
-
-            <PrivateRoute>
-            <NotFoundView />
-          </PrivateRoute> 
           </Suspense>
         </Switch> 
       

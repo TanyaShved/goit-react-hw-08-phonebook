@@ -5,7 +5,6 @@ import {  useSelector, useDispatch  } from 'react-redux';
 import { useState } from 'react';
 import { contactsOperations, contactsSelectors } from 'redux/contacts';
 import { Button } from '@material-ui/core';
-import s from './Phonebook.module.css';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -20,7 +19,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Phonebook = ({ title }) => {
+const Phonebook = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
    const classes = useStyles();
@@ -44,7 +43,7 @@ const Phonebook = ({ title }) => {
     setNumber('');
   };
 
-  const checkContactName = () => {
+  const checkContactName = (onClick) => {
     const namesInPhonebook = contacts.find(contact => contact.name === name);
 
     if (namesInPhonebook) {
@@ -55,7 +54,6 @@ const Phonebook = ({ title }) => {
 
   return (
       <div>
-        <h2 className={s.title}>{title}</h2>
         <form onSubmit={handeleSubmit} className={classes.root}>
 <div style={{marginBottom: "20px", color: 'red'}}>
         <TextField
@@ -73,7 +71,6 @@ const Phonebook = ({ title }) => {
               name="number"
               placeholder="4591256"
           onChange={setNumber}
-          style={{backgroundColor: "rgb(247, 218, 223)"}}
           />
           </div>
 
@@ -83,8 +80,8 @@ const Phonebook = ({ title }) => {
     );
 }
 
-Phonebook.propTypes = {
-  title: PropTypes.string.isRequired,
+Phonebook.protoTypes = {
+  onClick: PropTypes.func.isRequired
 };
 
 export default Phonebook;
