@@ -1,19 +1,16 @@
-import { Switch} from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { useEffect, lazy, Suspense  } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import AppBar from 'components/AppBar/AppBar';
-import Container from 'components/Container/Container';
 import { authOperations, authSelectors } from 'redux/auth';
-import Loader from 'react-loader-spinner';
-import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import NewAppBar from 'components/NewAppBar/NewAppBar';
+import Spinner from 'components/Spinner/Spinner';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import PublicRoute from 'components/PublicRoute/PublicRoute';
 
-const HomeView = lazy(() => import('views/HomeView'));
-const RegisterView = lazy(() => import('views/RegisterView'));
-const LoginView = lazy(() => import('views/LoginView'));
-const ContactsView = lazy(() => import('views/ContactsView'));
-// const UploadView = lazy(() => import('./views/UploadView'));
+const RegisterView = lazy(() => import('views/RegisterView'  /* webpackChunkName: "register-view" */));
+const LoginView = lazy(() => import('views/LoginView'  /* webpackChunkName: "login-view" */));
+const ContactsView = lazy(() => import('views/ContactsView'  /* webpackChunkName: "contacts-view" */));
+const NotFoundView = lazy(() =>import('views/NotFoundView' /* webpackChunkName: "not-found-view" */),);
 
 const App = () => { 
   const dispatch = useDispatch();
@@ -25,22 +22,14 @@ const App = () => {
 
   return (
     !isFetchingCurrentUser && (
-      <Container>
+      <>
       
-      <AppBar />
+      <NewAppBar />
 
       <Switch>
-        <Suspense fallback={<Loader
-        type="Bars"
-        color="#00BFFF"
-        height={100}
-        width={100}
-        timeout={3000}
-      />}>         
-          <PublicRoute exact path="/">
-            <HomeView />
-          </PublicRoute>
-
+          <Suspense fallback={
+            <Spinner />
+          }>  
           <PublicRoute path="/register" restricted>
             <RegisterView />
           </PublicRoute>
@@ -51,11 +40,15 @@ const App = () => {
           
           <PrivateRoute path="/contacts" redirectTo='/login'>
             <ContactsView />
-          </PrivateRoute>
+            </PrivateRoute>
+
+            <PrivateRoute>
+            <NotFoundView />
+          </PrivateRoute> 
           </Suspense>
         </Switch> 
       
-    </Container>)
+    </>)
     );
 }
 

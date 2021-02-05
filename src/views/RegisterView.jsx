@@ -1,16 +1,27 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
+import { Button } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
 
-const styles = {
-  form: {
-    width: 320,
+const useStyles = makeStyles(() => ({
+  root: {
+    '& .MuiTextField-root': {
+       width: '25ch',
+       display: 'flex',
+       flexDirection: 'column',
+       marginBottom: 15,
+    },
   },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
+}));
+
+const divStyles = {
+  display: 'flex',
+  flexFlow: 'column',
+  alignItems: 'center',
+  marginBottom: 20,
+  paddingBottom: 20,
 };
 
 export default function RegisterView() {
@@ -18,6 +29,7 @@ export default function RegisterView() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const classes = useStyles();
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -38,39 +50,48 @@ export default function RegisterView() {
     setName('');
     setEmail('');
     setPassword('');
+
+     if (name === '' || email === '' || password === '') {
+            return alert('Please fill in the required fields!');
+        };
   };
 
   return (
-    <div>
-      <h1>Страница регистрации</h1>
+    <div style={divStyles}>
+      <h1 style={{color: 'red'}}>Please log on</h1>
 
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
-          Имя
-          <input type="text" name="name" value={name} onChange={handleChange} />
-        </label>
-
-        <label style={styles.label}>
-          Почта
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
+      <form onSubmit={handleSubmit} className={classes.root} autoComplete="off">
+            <div>
+        <TextField
+          id="name"
+          label="Name"
+          value={name}
+          name="name"
+          onChange={handleChange}
+          variant="outlined"
+          color="secondary"
+        /> 
+        <TextField
+          id="email"
+          label="Email"
+          variant="outlined"
+          name="email"
+          value={email}
+          onChange={handleChange}
+          color="secondary"
           />
-        </label>
+           <TextField
+          id="password"
+          label="Password"
+          variant="outlined"
+          name="password"
+          value={password}
+          onChange={handleChange}
+          color="secondary"
+                  />
+              </div>
 
-        <label style={styles.label}>
-          Пароль
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          />
-        </label>
-
-        <button type="submit">Зарегистрироваться</button>
+<Button type="submit" variant="contained" color="secondary">Sign up</Button>
       </form>
     </div>
   );

@@ -3,37 +3,5 @@
   text-align: center;
 }
 
-.container {
-  padding: 20px;
-  width: 320px;
-  height: 170px;
 
-  border: 3px solid black;
-  border-radius: 4px;
-}
 
-.textInput {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-}
-
-.formInput {
-  height: 31px;
-  width: 285px;
-  padding-left: 10px;
-  outline: none;
-  border-radius: 5px;
-  border: 1px solid #cacaca;
-}
-
-.addButton {
-  padding: 5px;
-  border-radius: 4px;
-}
-
-.addButton:hover {
-  background-color: burlywood;
-  border: solid 1px transparent;
-  cursor: pointer;
-}

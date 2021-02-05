@@ -3,8 +3,7 @@ import IconButton from '../IconButton/IconButton';
 import { useSelector, useDispatch} from 'react-redux';
 import { ReactComponent as DeleteIcon } from 'icon/delete.svg';
 import { contactsOperations, contactsSelectors } from 'redux/contacts';
-import Loader from 'react-loader-spinner';
-import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import Spinner from 'components/Spinner/Spinner';
 import s from './ContactsList.module.css';
 
 
@@ -29,7 +28,7 @@ useEffect(() =>
                 onClick={() => dispatch(contactsOperations.deleteContact(id))}
                 aria-label="Delete contact"
               >
-                <DeleteIcon width="30" height="30" />
+                <DeleteIcon width="20" height="20" />
               </IconButton>
             </li>
           ))}
@@ -37,13 +36,9 @@ useEffect(() =>
       )
       }
 
-     {loading && (<Loader
-        type="Bars"
-        color="#00BFFF"
-        height={100}
-        width={100}
-        timeout={3000}
-      />)}
+      {loading && (
+        <Spinner />
+      )}
       <div>
         {error && <h1>{error.message}</h1>}
       </div>

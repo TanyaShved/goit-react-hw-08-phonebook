@@ -4,7 +4,7 @@ import Filter from 'components/Filter/Filter';
 import ContactsList from 'components/ContactsList/ContactsList';
 
 
-const barStyles = {
+const divStyles = {
   display: 'flex',
   flexFlow: 'column',
   alignItems: 'center',
@@ -14,7 +14,7 @@ const barStyles = {
 export default function ContactsViews(params) {
   return (
       <>
-          <div style={barStyles}>
+          <div style={divStyles}>
        <Pnonebook
           title="Pnonebook"
         />

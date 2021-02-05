@@ -1,14 +1,29 @@
 import PropTypes from 'prop-types';
 import PhoneInput from 'react-phone-input-2';
-import 'react-phone-input-2/lib/style.css';
+import 'react-phone-input-2/lib/material.css'
 import {  useSelector, useDispatch  } from 'react-redux';
 import { useState } from 'react';
-import {contactsOperations, contactsSelectors } from 'redux/contacts';
+import { contactsOperations, contactsSelectors } from 'redux/contacts';
+import { Button } from '@material-ui/core';
 import s from './Phonebook.module.css';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(() => ({
+  root: {
+    '& .MuiTextField-root': {
+       width: '25ch',
+       display: 'flex',
+       flexDirection: 'column',
+       marginBottom: 15,
+    },
+  },
+}));
 
 const Phonebook = ({ title }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+   const classes = useStyles();
   
   const contacts = useSelector(contactsSelectors.getContacts);
   const dispatch = useDispatch();
@@ -41,32 +56,28 @@ const Phonebook = ({ title }) => {
   return (
       <div>
         <h2 className={s.title}>{title}</h2>
-        <form onSubmit={handeleSubmit} className={s.container}>
-          <label className={s.textInput}>
-            Name
-            <input
-              type="text"
-              value={name}
-              name="name"
-              placeholder="Rosie Simpson"
-              onChange={e => setName(e.currentTarget.value)}
-              className={s.formInput}
-            />
-          </label>
-          <label className={s.textInput}>
-            Number
-            <PhoneInput
+        <form onSubmit={handeleSubmit} className={classes.root}>
+<div style={{marginBottom: "20px", color: 'red'}}>
+        <TextField
+          id="name"
+          label="name"
+          value={name}
+          name="email"
+          onChange={e => setName(e.currentTarget.value)}
+          variant="outlined"
+          color="secondary"
+        /> 
+         <PhoneInput
               country={'ua'}
               value={number}
               name="number"
               placeholder="4591256"
-              onChange={setNumber}
-              className={s.formInput_phone}
-            />
-          </label>
-          <button type="submit" className={s.addButton}>
-            Add contact
-          </button>
+          onChange={setNumber}
+          style={{backgroundColor: "rgb(247, 218, 223)"}}
+          />
+          </div>
+
+        <Button type="submit" variant="contained" color="secondary">Add contact</Button>
         </form>
       </div>
     );

@@ -4,8 +4,8 @@
   border: none;
   border-radius: 50%;
   font: inherit;
-  background-color: burlywood;
-  fill: black;
+  background-color: red;
+  fill:white;
   cursor: pointer;
 
   display: inline-flex;
@@ -14,5 +14,5 @@
 }
 
 .IconButton:hover {
-  fill: white;
+  fill: black;
 }

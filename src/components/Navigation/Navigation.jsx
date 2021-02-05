@@ -20,10 +20,6 @@ const Navigation = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
    return(
     <nav>
-    <NavLink to="/" exact style={styles.link} activeStyle={styles.activeLink}>
-      Главная
-    </NavLink>
-
        {isLoggedIn &&
          <NavLink
       to="/contacts"
@@ -31,7 +27,7 @@ const Navigation = () => {
       style={styles.link}
       activeStyle={styles.activeLink}
     >
-      Контакты
+      Contacts
     </NavLink>}
   </nav>
   ) 
