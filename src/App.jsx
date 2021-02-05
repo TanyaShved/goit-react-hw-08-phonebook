@@ -40,6 +40,10 @@ const App = () => {
           <PrivateRoute path="/contacts" redirectTo='/login'>
             <ContactsView />
             </PrivateRoute>
+
+            <PublicRoute redirectTo="/contacts" restricted>
+                       <LoginView />
+                </PublicRoute>
           </Suspense>
         </Switch> 
       

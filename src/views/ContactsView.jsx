@@ -39,7 +39,7 @@ export default function ContactsViews(params) {
         </div>
         {showModal && (
           <Modal onClose={toggleModal}>
-            <Pnonebook onClick={toggleModal}/>
+            <Pnonebook toggleModal={toggleModal}/>
           </Modal>)}
         
         <Contacts>

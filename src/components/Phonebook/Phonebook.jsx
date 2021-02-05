@@ -19,7 +19,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Phonebook = () => {
+const Phonebook = ({toggleModal}) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
    const classes = useStyles();
@@ -41,9 +41,10 @@ const Phonebook = () => {
     dispatch(contactsOperations.addContact({name, number}));
     setName('');
     setNumber('');
+    toggleModal();
   };
 
-  const checkContactName = (onClick) => {
+  const checkContactName = () => {
     const namesInPhonebook = contacts.find(contact => contact.name === name);
 
     if (namesInPhonebook) {
@@ -81,7 +82,7 @@ const Phonebook = () => {
 }
 
 Phonebook.protoTypes = {
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Phonebook;
