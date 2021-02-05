@@ -25,28 +25,27 @@ const App = () => {
       
       <NewAppBar />
 
-      <Switch>
-          <Suspense fallback={
+        <Suspense fallback={
             <Spinner />
           }>  
-          <PublicRoute path="/register" restricted>
+      <Switch>
+          <PublicRoute path="/register" restricted  exact>
             <RegisterView />
           </PublicRoute>
 
-          <PublicRoute path="/login" redirectTo='/contacts' restricted>
+          <PublicRoute path="/login" redirectTo='/contacts' restricted  exact>
             <LoginView />
           </PublicRoute>
           
-          <PrivateRoute path="/contacts" redirectTo='/login'>
+          <PrivateRoute path="/contacts" redirectTo='/login' exact>
             <ContactsView />
             </PrivateRoute>
 
             <PublicRoute redirectTo="/contacts" restricted>
                        <LoginView />
                 </PublicRoute>
-          </Suspense>
-        </Switch> 
-      
+          </Switch> 
+        </Suspense>
     </>)
     );
 }

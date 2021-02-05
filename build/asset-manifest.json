@@ -8,8 +8,8 @@
     "login-view.js": "/static/js/login-view.9624cee8.chunk.js",
     "login-view.js.map": "/static/js/login-view.9624cee8.chunk.js.map",
     "main.css": "/static/css/main.22da3dd9.chunk.css",
-    "main.js": "/static/js/main.f491133f.chunk.js",
-    "main.js.map": "/static/js/main.f491133f.chunk.js.map",
+    "main.js": "/static/js/main.589d8bff.chunk.js",
+    "main.js.map": "/static/js/main.589d8bff.chunk.js.map",
     "register-view.js": "/static/js/register-view.2c3d5697.chunk.js",
     "register-view.js.map": "/static/js/register-view.2c3d5697.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.cafa6b0d.js",
@@ -35,6 +35,6 @@
     "static/css/6.f2c13908.chunk.css",
     "static/js/6.37b3c98f.chunk.js",
     "static/css/main.22da3dd9.chunk.css",
-    "static/js/main.f491133f.chunk.js"
+    "static/js/main.589d8bff.chunk.js"
   ]
 }
